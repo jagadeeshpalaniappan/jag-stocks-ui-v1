@@ -45,7 +45,7 @@ export const bottomItems = [
     menus: [
       { href: '/app/my/profile', title: 'My Profile' },
       { href: '/app/my/preferences', title: 'My Preferences' },
-      { href: '/app/my/logout', title: 'Logout' }
+      { href: '/login', title: 'Logout' }
     ],
     title: 'Jagadeesh Palaniappan',
     hideTitle: true,
