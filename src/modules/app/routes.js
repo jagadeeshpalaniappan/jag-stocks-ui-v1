@@ -12,6 +12,7 @@ import MyProfileView from 'src/modules/my/views/MyProfileView';
 import ProductDetailView from 'src/modules/product/views/ProductDetailView';
 import ProductListView from 'src/modules/product/views/ProductIndexView';
 import SettingsView from 'src/modules/settings/views/SettingsView';
+// import TodosView from 'src/modules/todos/App';
 
 const routes = [
   {
@@ -43,6 +44,7 @@ const routes = [
         ]
       },
       { path: 'settings', element: <SettingsView /> },
+      // { path: 'todos', element: <TodosView /> },
       { path: '*', element: <Navigate to="/404" /> }
     ]
   },

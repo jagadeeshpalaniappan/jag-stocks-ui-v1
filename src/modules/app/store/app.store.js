@@ -3,17 +3,16 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 
 // After successfull (redux action) --redirectTo--> (some-route)
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
+// import { connectRouter, routerMiddleware } from 'connected-react-router';
+// import { createBrowserHistory } from 'history';
 
-import { userReducer } from '../modules/user/state/user.reducer';
+import { userReducer } from 'src/modules/stocks/state/reducer';
 // import { postReducer } from '../modules/post/state/post.reducer';
 
 //--------------------------------- Redux: Reducer -----------------------------------
 
-const createRootReducer = history => {
+const createRootReducer = () => {
   return combineReducers({
-    router: connectRouter(history),
     userState: userReducer
     // postState: postReducer
   });
@@ -22,12 +21,10 @@ const createRootReducer = history => {
 // const rootReducer = combineReducers({...});
 
 //--------------------------------- Redux: Store -----------------------------------
-
-export const history = createBrowserHistory();
-const rootReducer = createRootReducer(history);
+const rootReducer = createRootReducer();
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const middleware = [logger, routerMiddleware(history), thunk];
+const middleware = [logger, thunk];
 const store = createStore(
   rootReducer,
   composeEnhancers(applyMiddleware(...middleware))
