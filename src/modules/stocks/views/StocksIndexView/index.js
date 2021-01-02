@@ -6,6 +6,7 @@ import Results from './Results';
 import Toolbar from './Toolbar';
 import data from '../../data';
 import Header from '../Header';
+import Todos from './Todos';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +30,8 @@ const CustomerListView = () => {
       <Container maxWidth={false} className={classes.container}>
         <Toolbar />
         <Box mt={3}>
-          <Results customers={customers} />
+          {/* <Results customers={customers} /> */}
+          <Todos />
         </Box>
       </Container>
       <Outlet />

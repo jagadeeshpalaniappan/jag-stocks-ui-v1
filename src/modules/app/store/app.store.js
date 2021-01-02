@@ -6,14 +6,17 @@ import thunk from 'redux-thunk';
 // import { connectRouter, routerMiddleware } from 'connected-react-router';
 // import { createBrowserHistory } from 'history';
 
-import { userReducer } from 'src/modules/stocks/state/reducer';
+// import { userReducer } from 'src/modules/user/state/user.reducer';
 // import { postReducer } from '../modules/post/state/post.reducer';
+
+import { appReducer } from 'src/modules/stocks/state/redux';
 
 //--------------------------------- Redux: Reducer -----------------------------------
 
 const createRootReducer = () => {
   return combineReducers({
-    userState: userReducer
+    appState: appReducer
+    // userState: userReducer
     // postState: postReducer
   });
 };
