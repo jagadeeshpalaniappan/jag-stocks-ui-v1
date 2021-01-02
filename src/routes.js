@@ -4,8 +4,8 @@ import AppLayout from 'src/modules/app/layouts/AppLayout';
 import MainLayout from 'src/modules/app/layouts/MainLayout';
 import LoginView from 'src/modules/auth/views/LoginView';
 import RegisterView from 'src/modules/auth/views/RegisterView';
-import CustomerDetailView from 'src/modules/customer/views/CustomerDetailView';
-import CustomerListView from 'src/modules/customer/views/CustomerIndexView';
+import StocksDetailView from 'src/modules/stocks/views/StocksDetailView';
+import StocksIndexView from 'src/modules/stocks/views/StocksIndexView';
 import NotFoundView from 'src/modules/errors/NotFoundView';
 import MyPreferences from 'src/modules/my/views/MyPreferences';
 import MyProfileView from 'src/modules/my/views/MyProfileView';
@@ -20,8 +20,8 @@ const routes = [
     children: [
       {
         path: 'stocks',
-        element: <CustomerListView />,
-        children: [{ path: '/:id', element: <CustomerDetailView /> }]
+        element: <StocksIndexView />,
+        children: [{ path: '/:id', element: <StocksDetailView /> }]
       },
       {
         path: 'research',
@@ -32,8 +32,8 @@ const routes = [
       },
       {
         path: 'divTracker',
-        element: <CustomerListView />,
-        children: [{ path: '/:id', element: <CustomerDetailView /> }]
+        element: <StocksIndexView />,
+        children: [{ path: '/:id', element: <StocksDetailView /> }]
       },
       {
         path: 'my',
