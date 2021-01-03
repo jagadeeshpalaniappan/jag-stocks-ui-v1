@@ -25,6 +25,18 @@ import {
   apiCreateStockFailureReducer
 } from './createStock/reducer';
 
+import {
+  apiDeleteStockStartAction,
+  apiDeleteStockSuccessAction,
+  apiDeleteStockFailureAction
+} from './deleteStock/actions';
+
+import {
+  apiDeleteStockStartReducer,
+  apiDeleteStockSuccessReducer,
+  apiDeleteStockFailureReducer
+} from './deleteStock/reducer';
+
 //------------------ Reducers -------------
 
 const defaultState = {
@@ -70,7 +82,12 @@ export const stockReducer = handleActions(
     // CREATE_STOCK
     [apiCreateStockStartAction]: apiCreateStockStartReducer,
     [apiCreateStockSuccessAction]: apiCreateStockSuccessReducer,
-    [apiCreateStockFailureAction]: apiCreateStockFailureReducer
+    [apiCreateStockFailureAction]: apiCreateStockFailureReducer,
+
+    // DELETE_STOCK
+    [apiDeleteStockStartAction]: apiDeleteStockStartReducer,
+    [apiDeleteStockSuccessAction]: apiDeleteStockSuccessReducer,
+    [apiDeleteStockFailureAction]: apiDeleteStockFailureReducer
   },
   defaultState
 );

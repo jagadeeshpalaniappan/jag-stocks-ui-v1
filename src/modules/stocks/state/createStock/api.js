@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { API_URL_MAP, STOCKS } from 'src/modules/common/constants';
-const API_URL = `${API_URL_MAP[STOCKS]}/stocks`;
+// const API_URL = `${API_URL_MAP[STOCKS]}/stocks`;
+const API_URL = `${API_URL_MAP[STOCKS]}/users`;
 
 export async function createStock(stock) {
   console.log('fetch::createStock::', stock);

@@ -4,6 +4,7 @@ import { createSelector } from 'reselect';
 import StockAlert from './StockAlert';
 import { apiGetStocksAction } from '../../state/getStocks/actions';
 import { apiCreateStockAction } from '../../state/createStock/actions';
+import { apiDeleteStockAction } from '../../state/deleteStock/actions';
 
 //------------------ AddTodo ------------- [PERF-ISSUE-FIXED]
 
@@ -39,7 +40,7 @@ const AddTodoMemozd = connect(null, mapDispatchToProps1)(React.memo(AddTodo));
 
 //------------------ TodoItem ------------- [PERF-ISSUE-FIXED]
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todo, deleteStock }) => {
   console.log('TodoItem');
 
   return (
@@ -48,13 +49,27 @@ const TodoItem = ({ todo }) => {
         textDecoration: todo.completed ? 'line-through' : 'none'
       }}
     >
-      {todo.name}
+      <div>
+        <span>
+          [{todo.stockId}] {todo.name}
+        </span>
+        [
+        <a href="#" onClick={() => deleteStock(todo)}>
+          Delete
+        </a>
+        ]
+      </div>
     </li>
   );
 };
 
+const mapDispatchToProps2 = dispatch => {
+  return {
+    deleteStock: payload => dispatch(apiDeleteStockAction(payload))
+  };
+};
 // memoized: shallow compare and re-render
-const TodoItemMemozd = React.memo(TodoItem);
+const TodoItemMemozd = connect(null, mapDispatchToProps2)(React.memo(TodoItem));
 
 //------------------ Todos ------------- [PERF-ISSUE-FIXED]
 
