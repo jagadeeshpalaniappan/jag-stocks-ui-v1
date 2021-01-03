@@ -36,3 +36,16 @@ export const apiCreateStockFailureReducer = (state, action) => {
     }
   };
 };
+
+export const resetCreateStockStatusReducer = (state, action) => {
+  console.log('stockReducer:resetCreateStockStatusReducer', { state, action });
+  return {
+    ...state,
+    createStock: {
+      ...state.createStock,
+      success: false,
+      loading: false,
+      error: null
+    }
+  };
+};

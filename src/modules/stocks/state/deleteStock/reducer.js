@@ -36,3 +36,16 @@ export const apiDeleteStockFailureReducer = (state, action) => {
     }
   };
 };
+
+export const resetDeleteStockStatusReducer = (state, action) => {
+  console.log('stockReducer:resetDeleteStockStatusReducer', { state, action });
+  return {
+    ...state,
+    deleteStock: {
+      ...state.deleteStock,
+      success: false,
+      loading: false,
+      error: null
+    }
+  };
+};

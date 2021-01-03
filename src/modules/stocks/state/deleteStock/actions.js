@@ -5,11 +5,13 @@ import { deleteStock } from './api';
 export const {
   apiDeleteStockStartAction,
   apiDeleteStockSuccessAction,
-  apiDeleteStockFailureAction
+  apiDeleteStockFailureAction,
+  resetDeleteStockStatusAction
 } = createActions(
   'API_DELETE_STOCK_START_ACTION',
   'API_DELETE_STOCK_SUCCESS_ACTION',
-  'API_DELETE_STOCK_FAILURE_ACTION'
+  'API_DELETE_STOCK_FAILURE_ACTION',
+  'RESET_DELETE_STOCK_STATUS_ACTION'
 );
 
 // ASYCN-ACTION-CREATORS:

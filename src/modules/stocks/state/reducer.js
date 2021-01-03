@@ -16,25 +16,43 @@ import {
 import {
   apiCreateStockStartAction,
   apiCreateStockSuccessAction,
-  apiCreateStockFailureAction
+  apiCreateStockFailureAction,
+  resetCreateStockStatusAction
 } from './createStock/actions';
 
 import {
   apiCreateStockStartReducer,
   apiCreateStockSuccessReducer,
-  apiCreateStockFailureReducer
+  apiCreateStockFailureReducer,
+  resetCreateStockStatusReducer
 } from './createStock/reducer';
+
+import {
+  apiUpdateStockStartAction,
+  apiUpdateStockSuccessAction,
+  apiUpdateStockFailureAction,
+  resetUpdateStockStatusAction
+} from './updateStock/actions';
+
+import {
+  apiUpdateStockStartReducer,
+  apiUpdateStockSuccessReducer,
+  apiUpdateStockFailureReducer,
+  resetUpdateStockStatusReducer
+} from './updateStock/reducer';
 
 import {
   apiDeleteStockStartAction,
   apiDeleteStockSuccessAction,
-  apiDeleteStockFailureAction
+  apiDeleteStockFailureAction,
+  resetDeleteStockStatusAction
 } from './deleteStock/actions';
 
 import {
   apiDeleteStockStartReducer,
   apiDeleteStockSuccessReducer,
-  apiDeleteStockFailureReducer
+  apiDeleteStockFailureReducer,
+  resetDeleteStockStatusReducer
 } from './deleteStock/reducer';
 
 //------------------ Reducers -------------
@@ -83,11 +101,19 @@ export const stockReducer = handleActions(
     [apiCreateStockStartAction]: apiCreateStockStartReducer,
     [apiCreateStockSuccessAction]: apiCreateStockSuccessReducer,
     [apiCreateStockFailureAction]: apiCreateStockFailureReducer,
+    [resetCreateStockStatusAction]: resetCreateStockStatusReducer,
+
+    // UPDATE_STOCK
+    [apiUpdateStockStartAction]: apiUpdateStockStartReducer,
+    [apiUpdateStockSuccessAction]: apiUpdateStockSuccessReducer,
+    [apiUpdateStockFailureAction]: apiUpdateStockFailureReducer,
+    [resetUpdateStockStatusAction]: resetUpdateStockStatusReducer,
 
     // DELETE_STOCK
     [apiDeleteStockStartAction]: apiDeleteStockStartReducer,
     [apiDeleteStockSuccessAction]: apiDeleteStockSuccessReducer,
-    [apiDeleteStockFailureAction]: apiDeleteStockFailureReducer
+    [apiDeleteStockFailureAction]: apiDeleteStockFailureReducer,
+    [resetDeleteStockStatusAction]: resetDeleteStockStatusReducer
   },
   defaultState
 );

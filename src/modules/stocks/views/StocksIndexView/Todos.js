@@ -1,10 +1,13 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
-import StockAlert from './StockAlert';
 import { apiGetStocksAction } from '../../state/getStocks/actions';
 import { apiCreateStockAction } from '../../state/createStock/actions';
 import { apiDeleteStockAction } from '../../state/deleteStock/actions';
+import { apiUpdateStockAction } from '../../state/updateStock/actions';
+import { TodoMutaionStatus } from './TodoStatus';
+
+//------------------ TodoMutaionStatus -------------
 
 //------------------ AddTodo ------------- [PERF-ISSUE-FIXED]
 
@@ -40,8 +43,10 @@ const AddTodoMemozd = connect(null, mapDispatchToProps1)(React.memo(AddTodo));
 
 //------------------ TodoItem ------------- [PERF-ISSUE-FIXED]
 
-const TodoItem = ({ todo, deleteStock }) => {
+const TodoItem = ({ todo, updateStock, deleteStock }) => {
   console.log('TodoItem');
+  const [isEditMode, setIsEditMode] = useState(false);
+  const [name, setName] = useState(todo.name);
 
   return (
     <li
@@ -53,18 +58,41 @@ const TodoItem = ({ todo, deleteStock }) => {
         <span>
           [{todo.stockId}] {todo.name}
         </span>
-        [
+        ---[
+        <a href="#" onClick={() => setIsEditMode(!isEditMode)}>
+          Edit
+        </a>
+        --
         <a href="#" onClick={() => deleteStock(todo)}>
           Delete
         </a>
         ]
       </div>
+      {isEditMode && (
+        <div>
+          <input
+            type="text"
+            name="isEditMode"
+            value={name}
+            onChange={e => setName(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              updateStock({ ...todo, name });
+              setIsEditMode(false);
+            }}
+          >
+            Save
+          </button>
+        </div>
+      )}
     </li>
   );
 };
 
 const mapDispatchToProps2 = dispatch => {
   return {
+    updateStock: payload => dispatch(apiUpdateStockAction(payload)),
     deleteStock: payload => dispatch(apiDeleteStockAction(payload))
   };
 };
@@ -82,7 +110,7 @@ const Todos = ({ todos, toggleTodo, getStocks, apiGetStocksStartAction }) => {
   return (
     <div>
       <h3>Todos: (Simple1)</h3>
-      <StockAlert />
+      <TodoMutaionStatus />
       <AddTodoMemozd />
 
       {todos.loading && 'Loading Todos...'}
@@ -91,7 +119,7 @@ const Todos = ({ todos, toggleTodo, getStocks, apiGetStocksStartAction }) => {
       <ul>
         {todos.data &&
           todos.data.map(todo => (
-            <TodoItemMemozd todo={todo} toggleTodo={toggleTodo} />
+            <TodoItemMemozd key={todo.id} todo={todo} toggleTodo={toggleTodo} />
           ))}
       </ul>
     </div>
