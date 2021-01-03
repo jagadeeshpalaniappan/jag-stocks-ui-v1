@@ -73,17 +73,17 @@ const defaultState = {
     loading: false,
     error: null
   },
-  createStock: {
+  createStockStatus: {
     success: false,
     loading: false,
     error: null
   },
-  updateStock: {
+  updateStockStatus: {
     success: false,
     loading: false,
     error: null
   },
-  deleteStock: {
+  deleteStockStatus: {
     success: false,
     loading: false,
     error: null

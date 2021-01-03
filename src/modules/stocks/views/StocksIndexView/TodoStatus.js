@@ -34,28 +34,28 @@ const StatusMsg = ({ children, success, error, onClose }) => {
 // connect(mapStateToProps, mapDispatchToProps)(MyComp);
 export const CreateTodoStatus = connect(
   state => ({
-    createStock: state.stockState.createStock
+    createStockStatus: state.stockState.createStockStatus
   }),
   dispatch => {
     return {
       resetCreateStockStatus: () => dispatch(resetCreateStockStatusAction())
     };
   }
-)(({ createStock, resetCreateStockStatus }) => {
+)(({ createStockStatus, resetCreateStockStatus }) => {
   console.log('CreateTodoStatus');
   return (
     <>
-      {createStock.loading && (
+      {createStockStatus.loading && (
         <StatusMsg onClose={resetCreateStockStatus}>
           Creating Stock...
         </StatusMsg>
       )}
-      {createStock.success && (
+      {createStockStatus.success && (
         <StatusMsg success onClose={resetCreateStockStatus}>
           Stock Created Successfully
         </StatusMsg>
       )}
-      {createStock.error && (
+      {createStockStatus.error && (
         <StatusMsg error onClose={resetCreateStockStatus}>
           Failed to Create Stock
         </StatusMsg>
@@ -67,28 +67,28 @@ export const CreateTodoStatus = connect(
 // connect(mapStateToProps, mapDispatchToProps)(MyComp);
 export const UpdateTodoStatus = connect(
   state => ({
-    updateStock: state.stockState.updateStock
+    updateStockStatus: state.stockState.updateStockStatus
   }),
   dispatch => {
     return {
       resetUpdateStockStatus: () => dispatch(resetUpdateStockStatusAction())
     };
   }
-)(({ updateStock, resetUpdateStockStatus }) => {
+)(({ updateStockStatus, resetUpdateStockStatus }) => {
   console.log('UpdateTodoStatus');
   return (
     <>
-      {updateStock.loading && (
+      {updateStockStatus.loading && (
         <StatusMsg onClose={resetUpdateStockStatus}>
           Updating Stock...
         </StatusMsg>
       )}
-      {updateStock.success && (
+      {updateStockStatus.success && (
         <StatusMsg success onClose={resetUpdateStockStatus}>
           Stock Updated Successfully
         </StatusMsg>
       )}
-      {updateStock.error && (
+      {updateStockStatus.error && (
         <StatusMsg error onClose={resetUpdateStockStatus}>
           Failed to Update Stock
         </StatusMsg>
@@ -100,28 +100,28 @@ export const UpdateTodoStatus = connect(
 // connect(mapStateToProps, mapDispatchToProps)(MyComp);
 export const DeleteTodoStatus = connect(
   state => ({
-    deleteStock: state.stockState.deleteStock
+    deleteStockStatus: state.stockState.deleteStockStatus
   }),
   dispatch => {
     return {
       resetDeleteStockStatus: () => dispatch(resetDeleteStockStatusAction())
     };
   }
-)(({ deleteStock, resetDeleteStockStatus }) => {
+)(({ deleteStockStatus, resetDeleteStockStatus }) => {
   console.log('DeleteTodoStatus');
   return (
     <>
-      {deleteStock.loading && (
+      {deleteStockStatus.loading && (
         <StatusMsg onClose={resetDeleteStockStatus}>
           Deleting Stock...
         </StatusMsg>
       )}
-      {deleteStock.success && (
+      {deleteStockStatus.success && (
         <StatusMsg success onClose={resetDeleteStockStatus}>
           Stock Deleted Successfully
         </StatusMsg>
       )}
-      {deleteStock.error && (
+      {deleteStockStatus.error && (
         <StatusMsg error onClose={resetDeleteStockStatus}>
           Failed to Delete Stock
         </StatusMsg>
