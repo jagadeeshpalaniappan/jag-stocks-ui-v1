@@ -54,7 +54,7 @@ const defaultState = {
   }
 };
 
-export const appReducer = handleActions(
+export const stockReducer = handleActions(
   {
     // GET_STOCKS:
     [apiGetStocksStartAction]: apiGetStocksStartReducer,

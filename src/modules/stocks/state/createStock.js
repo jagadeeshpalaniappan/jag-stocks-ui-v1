@@ -27,7 +27,7 @@ export const apiCreateStockAction = stock => async dispatch => {
 
 // REDUCERS:
 export const apiCreateStockStartReducer = (state, action) => {
-  console.log('appReducer:apiCreateStockStartReducer', { state, action });
+  console.log('stockReducer:apiCreateStockStartReducer', { state, action });
   return {
     ...state,
     createStock: {
@@ -40,7 +40,7 @@ export const apiCreateStockStartReducer = (state, action) => {
 };
 
 export const apiCreateStockSuccessReducer = (state, action) => {
-  console.log('appReducer:apiCreateStockSuccessReducer', { state, action });
+  console.log('stockReducer:apiCreateStockSuccessReducer', { state, action });
   return {
     ...state,
     createStock: {
@@ -52,7 +52,7 @@ export const apiCreateStockSuccessReducer = (state, action) => {
   };
 };
 export const apiCreateStockFailureReducer = (state, action) => {
-  console.log('appReducer:apiCreateStockFailureReducer', { state, action });
+  console.log('stockReducer:apiCreateStockFailureReducer', { state, action });
   return {
     ...state,
     createStock: {

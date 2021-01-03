@@ -9,13 +9,13 @@ import thunk from 'redux-thunk';
 // import { userReducer } from 'src/modules/user/state/user.reducer';
 // import { postReducer } from '../modules/post/state/post.reducer';
 
-import { appReducer } from 'src/modules/stocks/state/redux';
+import { stockReducer } from 'src/modules/stocks/state/reducer';
 
 //--------------------------------- Redux: Reducer -----------------------------------
 
 const createRootReducer = () => {
   return combineReducers({
-    appState: appReducer
+    stockState: stockReducer
     // userState: userReducer
     // postState: postReducer
   });

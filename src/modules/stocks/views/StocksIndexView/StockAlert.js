@@ -16,9 +16,9 @@ export const StockAlert = ({ createStock, updateStock, deleteStock }) => {
 };
 
 const mapStateToProps = state => ({
-  createStock: state.appState.createStock,
-  updateStock: state.appState.updateStock,
-  deleteStock: state.appState.deleteStock
+  createStock: state.stockState.createStock,
+  updateStock: state.stockState.updateStock,
+  deleteStock: state.stockState.deleteStock
 });
 
 const mapDispatchToProps = {};

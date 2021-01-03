@@ -69,10 +69,15 @@ const Todos = ({ todos, toggleTodo, getStocks, apiGetStocksStartAction }) => {
       <h3>Todos: (Simple1)</h3>
       <StockAlert />
       <AddTodoMemozd />
+
+      {todos.loading && 'Loading Todos...'}
+      {todos.error && 'Error when getting Todos'}
+
       <ul>
-        {todos.map(todo => (
-          <TodoItemMemozd todo={todo} toggleTodo={toggleTodo} />
-        ))}
+        {todos.data &&
+          todos.data.map(todo => (
+            <TodoItemMemozd todo={todo} toggleTodo={toggleTodo} />
+          ))}
       </ul>
     </div>
   );
@@ -80,16 +85,16 @@ const Todos = ({ todos, toggleTodo, getStocks, apiGetStocksStartAction }) => {
 
 //------------------ Redux: Selectors -------------
 
-const getTodos = state => state.appState.todos;
+const getTodos = state => state.stockState.todos;
 
 // PERFORMANCE-ISSUE-FIXED: // created: MemoizedSelector
-// 'todos.filter' will be called only if 'state.appState.todos' changes
+// 'todos.filter' will be called only if 'state.stockState.todos' changes
 const getVisibleTodos = createSelector([getTodos], todos =>
   todos.filter(todo => !todo.completed)
 );
 
 const mapStateToProps = state => ({
-  todos: state.appState.stocks && state.appState.stocks.data
+  todos: state.stockState.stocks
   // todos: getVisibleTodos(state)
 });
 
