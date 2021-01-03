@@ -2,8 +2,8 @@ import React, { useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { createSelector } from 'reselect';
 import StockAlert from './StockAlert';
-import { apiGetStocksAction } from '../../state/getStocks';
-import { apiCreateStockAction } from '../../state/createStock';
+import { apiGetStocksAction } from '../../state/getStocks/actions';
+import { apiCreateStockAction } from '../../state/createStock/actions';
 
 //------------------ AddTodo ------------- [PERF-ISSUE-FIXED]
 

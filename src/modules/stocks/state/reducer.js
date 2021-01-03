@@ -4,20 +4,26 @@ import { v4 as uuid } from 'uuid';
 import {
   apiGetStocksStartAction,
   apiGetStocksSuccessAction,
-  apiGetStocksFailureAction,
+  apiGetStocksFailureAction
+} from './getStocks/actions';
+
+import {
   apiGetStocksStartReducer,
   apiGetStocksSuccessReducer,
   apiGetStocksFailureReducer
-} from './getStocks';
+} from './getStocks/reducer';
 
 import {
   apiCreateStockStartAction,
   apiCreateStockSuccessAction,
-  apiCreateStockFailureAction,
+  apiCreateStockFailureAction
+} from './createStock/actions';
+
+import {
   apiCreateStockStartReducer,
   apiCreateStockSuccessReducer,
   apiCreateStockFailureReducer
-} from './createStock';
+} from './createStock/reducer';
 
 //------------------ Reducers -------------
 
