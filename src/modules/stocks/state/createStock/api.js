@@ -1,6 +1,6 @@
 import axios from 'axios';
-
-const USER_REST_API = 'https://jag-rest-api.vercel.app/demo/rest/v1/api/users';
+import { API_URL_MAP, STOCKS } from 'src/modules/common/constants';
+const API_URL = `${API_URL_MAP[STOCKS]}/stocks`;
 
 export async function createStock(stock) {
   console.log('fetch::createStock::', stock);
@@ -14,7 +14,7 @@ export async function createStock(stock) {
     sex: 'M',
     role: 'Dev'
   };
-  const response = await axios.post(USER_REST_API, body);
+  const response = await axios.post(API_URL, body);
 
   console.log('fetch::createStock:: response:', response);
   return response.data.user;

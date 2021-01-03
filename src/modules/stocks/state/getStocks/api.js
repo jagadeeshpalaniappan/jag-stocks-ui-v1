@@ -1,11 +1,12 @@
 import axios from 'axios';
 
-const USER_REST_API = 'https://jag-rest-api.vercel.app/demo/rest/v1/api/users';
+import { API_URL_MAP, STOCKS } from 'src/modules/common/constants';
+const API_URL = `${API_URL_MAP[STOCKS]}/stocks`;
 
 export async function getStocks(config) {
   console.log('fetch::getStocks::', config);
   const params = {};
-  const response = await axios.get(USER_REST_API, { params });
+  const response = await axios.get(API_URL, { params });
   console.log('fetch::getStocks:: response:', response);
   const { data, meta } = response.data;
   return { data, pagination: meta };
