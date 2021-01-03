@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { API_URL_MAP, STOCKS } from 'src/modules/common/constants';
+import { API_URL_MAP, STOCKS } from 'src/modules/stocks/constants';
 // const API_URL = `${API_URL_MAP[STOCKS]}/stocks`;
 const API_URL = `${API_URL_MAP[STOCKS]}/users`;
 
