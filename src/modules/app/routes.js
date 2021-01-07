@@ -14,12 +14,18 @@ import ProductListView from 'src/modules/product/views/ProductIndexView';
 import SettingsView from 'src/modules/settings/views/SettingsView';
 import UsersView from 'src/modules/user/views/Users';
 // import TodosView from 'src/modules/todos/App';
+import MyStocksIndexView from 'src/modules/mystock/views/MyStocksIndexView';
 
 const routes = [
   {
     path: 'app',
     element: <AppLayout />,
     children: [
+      {
+        path: 'mystocks',
+        element: <MyStocksIndexView />,
+        children: [{ path: '/:id', element: <StocksDetailView /> }]
+      },
       {
         path: 'stocks',
         element: <StocksIndexView />,

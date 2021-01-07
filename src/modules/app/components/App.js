@@ -3,6 +3,7 @@ import AppStateProvider from './AppStateProvider';
 import AppRouteProvider from './AppRouteProvider';
 import AppThemeProvider from './AppThemeProvider';
 import AppContainer from './AppContainer';
+import '../css/table.scss';
 
 const App = () => {
   console.log('### App:');

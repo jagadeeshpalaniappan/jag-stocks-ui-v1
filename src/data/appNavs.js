@@ -5,7 +5,8 @@ export const user = {
 };
 
 export const navMap = {
-  '/app/stocks': 'My Stocks',
+  '/app/stocks': 'Stocks',
+  '/app/mystocks': 'My Stocks',
   '/app/research': 'Research',
   '/app/divTracker': 'DivTracker',
   '/app/settings': 'Settings',
@@ -14,7 +15,7 @@ export const navMap = {
 
 export const items = [
   {
-    href: '/app/stocks',
+    href: '/app/mystocks',
     icon: 'Stocks',
     title: 'My Stocks'
   },
