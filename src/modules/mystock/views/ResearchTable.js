@@ -12,10 +12,10 @@ import {
 } from 'react-table';
 
 import { tableData } from './data';
-import customFilterTypes from '../filters/customFilterTypes';
-import NumberRangeColumnFilter from '../filters/NumberRangeColumnFilter';
-import SelectColumnFilter from '../filters/SelectColumnFilter';
-import DefaultColumnFilter from '../filters/DefaultColumnFilter';
+import customFilterTypes from '../components/filters/customFilterTypes';
+import NumberRangeColumnFilter from '../components/filters/NumberRangeColumnFilter';
+import SelectColumnFilter from '../components/filters/SelectColumnFilter';
+import DefaultColumnFilter from '../components/filters/DefaultColumnFilter';
 import EditableCell from '../components/EditableCell';
 import { useCheckboxSelection } from '../components/CheckboxSelection';
 import Pagination from '../components/Pagination';
