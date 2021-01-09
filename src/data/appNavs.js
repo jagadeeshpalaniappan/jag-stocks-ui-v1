@@ -28,6 +28,11 @@ export const items = [
     href: '/app/divTracker',
     icon: 'DivTracker',
     title: 'DivTracker'
+  },
+  {
+    href: '/app/product',
+    icon: 'Research',
+    title: 'Research'
   }
 ];
 

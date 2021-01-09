@@ -15,6 +15,7 @@ import SettingsView from 'src/modules/settings/views/SettingsView';
 import UsersView from 'src/modules/user/views/Users';
 // import TodosView from 'src/modules/todos/App';
 import MyStocksIndexView from 'src/modules/mystock/views/MyStocksIndexView';
+import ResearchIndexView from 'src/modules/research/views/ResearchIndexView';
 
 const routes = [
   {
@@ -33,6 +34,10 @@ const routes = [
       },
       {
         path: 'research',
+        children: [{ path: '/', element: <ResearchIndexView /> }]
+      },
+      {
+        path: 'products',
         children: [
           { path: '/', element: <ProductListView /> },
           { path: '/:id', element: <ProductDetailView /> }
