@@ -1,14 +1,14 @@
 import React from 'react';
-import NumberRangeColumnFilter from '../../../mystock/components/filters/NumberRangeColumnFilter';
-import SelectColumnFilter from '../../../mystock/components/filters/SelectColumnFilter';
+import NumberRangeColumnFilter from '../../../../mystock/components/filters/NumberRangeColumnFilter';
+import SelectColumnFilter from '../../../../mystock/components/filters/SelectColumnFilter';
 
-import EditableCell from '../../../mystock/components/EditableCell';
-import DefaultColumnFilter from '../../../mystock/components/filters/DefaultColumnFilter';
+import EditableCell from '../../../../mystock/components/EditableCell';
+import DefaultColumnFilter from '../../../../mystock/components/filters/DefaultColumnFilter';
 
-export const tableDefaultColumn = () => ({
+export const tableDefaultColumn = {
   Filter: DefaultColumnFilter,
   Cell: EditableCell
-});
+};
 
 // ["stockId", "name", "yfRating", "rhNOfAnalysts", "rhBuy", "rhHold", "rhSell", "rhgStarRating", "rhgStewardship", "rhgUncertainty"]
 export const tableCols = [

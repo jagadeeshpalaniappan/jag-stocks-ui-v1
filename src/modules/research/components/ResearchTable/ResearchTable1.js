@@ -1,18 +1,31 @@
 import React from 'react';
-
+import EditableCell from '../../../mystock/components/EditableCell';
 import customFilterTypes from '../../../mystock/components/filters/customFilterTypes';
+import DefaultColumnFilter from '../../../mystock/components/filters/DefaultColumnFilter';
 
 import GlobalSearchFilter from '../../../mystock/components/GlobalSearchFilter';
 import Pagination from '../../../mystock/components/Pagination';
 import ShowHideColumns from '../../../mystock/components/ShowHideColumns';
-import Table from './Table';
+import Table from './Table/index1';
 import TableDebugVals from './TableDebugVals';
 import useMyTable from './useMyTable';
-import { tableCols, tableDefaultColumn } from './tableCols';
+import { tableCols } from './Table/config';
 import { tableData } from '../../data';
 
+const defaultColumnConfig = {
+  Filter: DefaultColumnFilter,
+  Cell: EditableCell
+};
+
 // Be sure to pass our updateMyData and the skipReset option
-function ResearchTable({ data, updateMyData, skipReset }) {
+function ResearchTable({
+  columns,
+  data,
+  updateMyData,
+  skipReset,
+  filterTypes,
+  defaultColumn
+}) {
   // Use the state and functions returned from useTable to build your UI
   const {
     page,
@@ -43,10 +56,10 @@ function ResearchTable({ data, updateMyData, skipReset }) {
       globalFilter
     }
   } = useMyTable({
-    columns: tableCols,
+    columns,
     data,
-    defaultColumn: tableDefaultColumn,
-    // filterTypes: customFilterTypes,
+    defaultColumn: defaultColumnConfig,
+    filterTypes,
     updateMyData,
     skipReset
   });
@@ -130,23 +143,22 @@ function roundedMedian(leafValues) {
   return Math.round((min + max) / 2);
 }
 
-function ResearchTable1() {
+function ResearchTable1({}) {
+  const columns = React.useMemo(() => tableCols, []);
+  const filterTypes = React.useMemo(customFilterTypes, []);
+  // const defaultColumn = React.useMemo(defaultColumnConfig, []);
+
   // console.log({ tableData });
-
-  // We need to keep the table from resetting the pageIndex when we Update data.
-  // So we can keep track of that flag with a ref.
-  const skipResetRef = React.useRef(false);
   const [data, setData] = React.useState(() => tableData);
-  const [originalData] = React.useState(data);
+  const [originalData] = React.useState(tableData);
 
-  // After data changes, we turn the flag back off
-  // so that if data actually changes when we're not
-  // editing it, the page is reset
-  React.useEffect(() => {
-    skipResetRef.current = false;
-  }, [data]);
+  // We need to keep the table from resetting the pageIndex when we
+  // Update data. So we can keep track of that flag with a ref.
+  const skipResetRef = React.useRef(false);
 
-  // When our cell renderer calls updateMyData, we'll use the rowIndex, columnId and new value to update the original data
+  // When our cell renderer calls updateMyData, we'll use
+  // the rowIndex, columnId and new value to update the
+  // original data
   const updateMyData = (rowIndex, columnId, value) => {
     console.log('updateMyData:', { rowIndex, columnId, value });
     // We also turn on the flag to not reset the page
@@ -164,6 +176,13 @@ function ResearchTable1() {
     // );
   };
 
+  // After data changes, we turn the flag back off
+  // so that if data actually changes when we're not
+  // editing it, the page is reset
+  React.useEffect(() => {
+    skipResetRef.current = false;
+  }, [data]);
+
   // Let's add a data resetter/randomizer to help
   // illustrate that flow...
   const resetData = () => {
@@ -175,11 +194,11 @@ function ResearchTable1() {
   return (
     <div>
       <ResearchTable
-        columns={tableCols}
-        defaultColumn={tableDefaultColumn}
+        columns={columns}
         data={data}
         updateMyData={updateMyData}
         skipReset={skipResetRef.current}
+        filterTypes={filterTypes}
       />
     </div>
   );
