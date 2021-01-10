@@ -1,6 +1,8 @@
 import React from 'react';
 import NumberRangeColumnFilter from '../components/filters/NumberRangeColumnFilter';
 import SelectColumnFilter from '../components/filters/SelectColumnFilter';
+import RhAnalysisCell from '../components/cells/RhAnalysisCell';
+import YfRatingCell from '../components/cells/YfRatingCell';
 
 // ["stockId", "name", "yfRating", "rhNOfAnalysts", "rhBuy", "rhHold", "rhSell", "rhgStarRating", "rhgStewardship", "rhgUncertainty"]
 const columns = [
@@ -23,30 +25,12 @@ const columns = [
     accessor: 'yfRating',
     Filter: NumberRangeColumnFilter,
     filter: 'between',
-    Cell: ({ value, row }) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <small style={{ width: 40 }}>
-          ({row.original && row.original['yfNOfAnalysts']})
-        </small>
-        <div>{value}</div>
-      </div>
-    )
+    Cell: YfRatingCell
   },
   {
     Header: 'RH',
     accessor: 'rhBuy',
-    Cell: ({ value, row }) => (
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <small style={{ width: 40 }}>
-          ({row.original && row.original['rhNOfAnalysts']})
-        </small>
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
-          <span>B:{row.original && row.original['rhBuy']}</span>
-          <span>H:{row.original && row.original['rhHold']}</span>
-          <span>S:{row.original && row.original['rhSell']}</span>
-        </div>
-      </div>
-    )
+    Cell: RhAnalysisCell
   },
   {
     Header: 'rhgStarRating',

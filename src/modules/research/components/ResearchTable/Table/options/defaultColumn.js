@@ -1,10 +1,11 @@
 import React from 'react';
 
-import TableEditableCell from '../components/TableEditableCell';
+// import TableEditableCell from '../components/TableEditableCell';
+import DefaultCell from '../components/cells/DefaultCell';
 import DefaultColumnFilter from '../components/filters/DefaultColumnFilter';
 
 const defaultColumn = {
   Filter: DefaultColumnFilter,
-  Cell: TableEditableCell
+  Cell: DefaultCell
 };
 export default defaultColumn;
