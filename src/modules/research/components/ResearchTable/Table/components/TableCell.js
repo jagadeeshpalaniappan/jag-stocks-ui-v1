@@ -3,7 +3,14 @@ import GroupedCell from './TableGroupedCell';
 
 export default function TableCell({ row, cell }) {
   return (
-    <td {...cell.getCellProps()}>
+    <td
+      style={{
+        margin: '0',
+        padding: '0.5rem',
+        borderBottom: '1px solid rgba(224, 224, 224, 1)'
+      }}
+      {...cell.getCellProps()}
+    >
       {cell.isGrouped ? (
         <GroupedCell row={row} cell={cell} />
       ) : cell.isAggregated ? (
