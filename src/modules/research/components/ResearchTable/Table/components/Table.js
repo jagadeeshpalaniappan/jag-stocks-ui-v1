@@ -1,4 +1,3 @@
-import { Paper } from '@material-ui/core';
 import React from 'react';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
@@ -18,7 +17,7 @@ export default function Table({
     getTableBodyProps
   });
   return (
-    <Paper elevation={2} style={{ overflowX: 'auto' }}>
+    <div style={{ backgroundColor: '#fff', overflowX: 'auto' }}>
       <table {...getTableProps()}>
         <TableHeader headerGroups={headerGroups} />
         <TableBody
@@ -27,6 +26,6 @@ export default function Table({
           getTableBodyProps={getTableBodyProps}
         />
       </table>
-    </Paper>
+    </div>
   );
 }

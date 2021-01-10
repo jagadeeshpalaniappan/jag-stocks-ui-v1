@@ -1,4 +1,3 @@
-import { Typography } from '@material-ui/core';
 import React from 'react';
 export default function TableHeader({ headerGroups }) {
   return (
@@ -16,7 +15,7 @@ export default function TableHeader({ headerGroups }) {
                 ) : null}
 
                 <span {...column.getSortByToggleProps()}>
-                  <Typography>{column.render('Header')}</Typography>
+                  {column.render('Header')}
                   {/* Add a sort direction indicator */}
                   {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
                 </span>

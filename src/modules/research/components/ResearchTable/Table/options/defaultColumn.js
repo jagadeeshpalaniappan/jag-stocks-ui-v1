@@ -1,7 +1,7 @@
 import React from 'react';
 
-import EditableCell from '../../../../../mystock/components/EditableCell';
-import DefaultColumnFilter from '../../../../../mystock/components/filters/DefaultColumnFilter';
+import EditableCell from '../components/EditableCell';
+import DefaultColumnFilter from '../components/filters/DefaultColumnFilter';
 
 const defaultColumn = {
   Filter: DefaultColumnFilter,

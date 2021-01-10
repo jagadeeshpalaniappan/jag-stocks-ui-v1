@@ -1,6 +1,6 @@
 import React from 'react';
-import NumberRangeColumnFilter from '../../../../../mystock/components/filters/NumberRangeColumnFilter';
-import SelectColumnFilter from '../../../../../mystock/components/filters/SelectColumnFilter';
+import NumberRangeColumnFilter from '../components/filters/NumberRangeColumnFilter';
+import SelectColumnFilter from '../components/filters/SelectColumnFilter';
 
 // ["stockId", "name", "yfRating", "rhNOfAnalysts", "rhBuy", "rhHold", "rhSell", "rhgStarRating", "rhgStewardship", "rhgUncertainty"]
 const columns = [

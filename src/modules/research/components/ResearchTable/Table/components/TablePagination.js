@@ -13,7 +13,7 @@ export default function Pagination({
   setPageSize
 }) {
   return (
-    <div className="pagination">
+    <div style={{ padding: 10 }}>
       <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
         {'<<'}
       </button>{' '}

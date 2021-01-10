@@ -18,20 +18,23 @@ export default function ShowHideColumns({
   getToggleHideAllColumnsProps
 }) {
   return (
-    <div style={{ display: 'flex' }}>
-      <h4>Show/Hide Columns:</h4>
-      <div style={{ marginLeft: 10 }}>
-        <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle All
-      </div>
-      {allColumns.map(column => (
-        <div key={column.id} style={{ marginLeft: 10 }}>
-          <label>
-            <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
-            {column.Header}
-          </label>
+    <div>
+      <h4 style={{ marginTop: 20, marginBottom: 10 }}>Show/Hide Columns:</h4>
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ marginLeft: 10 }}>
+          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
+          All
         </div>
-      ))}
-      <br />
+        {allColumns.map(column => (
+          <div key={column.id} style={{ marginLeft: 10 }}>
+            <label>
+              <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
+              {column.Header}
+            </label>
+          </div>
+        ))}
+        <br />
+      </div>
     </div>
   );
 }
