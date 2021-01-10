@@ -20,7 +20,9 @@ export default function ShowHideColumns({
   return (
     <div>
       <h4 style={{ marginTop: 20, marginBottom: 10 }}>Show/Hide Columns:</h4>
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div
+        style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#fff' }}
+      >
         <div style={{ marginLeft: 10 }}>
           <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
           All

@@ -4,7 +4,7 @@ import Table from './Table';
 import { tableData } from '../../data';
 
 function ResearchTable() {
-  // console.log({ tableData });
+  console.log({ tableData });
 
   // We need to keep the table from resetting the pageIndex when we Update data.
   // So we can keep track of that flag with a ref.

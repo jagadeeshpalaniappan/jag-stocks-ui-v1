@@ -18,6 +18,7 @@ import columns from './options/columns';
 import defaultColumn from './options/defaultColumn';
 import filterTypes from './options/filterTypes';
 import useCheckboxSelection from './plugins/useCheckboxSelection';
+import TableAppliedFilters from './components/TableAppliedFilters';
 
 // Be sure to pass our updateMyData and the skipReset option
 function TableIndex({ data, updateMyData, skipReset }) {
@@ -35,6 +36,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
     setPageSize,
     preGlobalFilteredRows,
     setGlobalFilter,
+    setFilter,
     allColumns,
     getTableProps,
     getTableBodyProps,
@@ -84,6 +86,8 @@ function TableIndex({ data, updateMyData, skipReset }) {
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
       />
+
+      <TableAppliedFilters filters={filters} setFilter={setFilter} />
 
       <Table
         getTableProps={getTableProps}
