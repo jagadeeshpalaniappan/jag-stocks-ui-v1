@@ -1,8 +1,4 @@
 import React from 'react';
-import GlobalSearchFilter from '../../../../mystock/components/GlobalSearchFilter';
-import Pagination from '../../../../mystock/components/Pagination';
-import ShowHideColumns from '../../../../mystock/components/ShowHideColumns';
-import TableDebugVals from '../TableDebugVals';
 import {
   useExpanded,
   useFilters,
@@ -13,14 +9,18 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import { useCheckboxSelection } from '../../../../mystock/components/CheckboxSelection';
-
-import { tableCols, tableDefaultColumn } from './config';
-import filterTypes from './filterTypes';
-import Table from './Table';
+import TableDebugVals from './components/TableDebugVals';
+import Table from './components/Table';
+import TablePagination from './components/TablePagination';
+import TableSearchInput from './components/TableSearchInput';
+import TableShowHideColumns from './components/TableShowHideColumns';
+import columns from './options/columns';
+import defaultColumn from './options/defaultColumn';
+import filterTypes from './options/filterTypes';
+import useCheckboxSelection from './plugins/useCheckboxSelection';
 
 // Be sure to pass our updateMyData and the skipReset option
-function ResearchTable1({ data, updateMyData, skipReset }) {
+function TableIndex({ data, updateMyData, skipReset }) {
   // Use the state and functions returned from useTable to build your UI
   const {
     page,
@@ -52,9 +52,9 @@ function ResearchTable1({ data, updateMyData, skipReset }) {
     }
   } = useTable(
     {
-      columns: tableCols,
       data,
-      defaultColumn: tableDefaultColumn,
+      columns,
+      defaultColumn,
       filterTypes,
       updateMyData, // isn't part of the API  (available on the instance), we can call this function from our cell renderer
       autoResetPage: !skipReset,
@@ -75,11 +75,11 @@ function ResearchTable1({ data, updateMyData, skipReset }) {
   // Render the UI for your table
   return (
     <div>
-      <ShowHideColumns
+      <TableShowHideColumns
         allColumns={allColumns}
         getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
       />
-      <GlobalSearchFilter
+      <TableSearchInput
         preGlobalFilteredRows={preGlobalFilteredRows}
         globalFilter={globalFilter}
         setGlobalFilter={setGlobalFilter}
@@ -93,7 +93,7 @@ function ResearchTable1({ data, updateMyData, skipReset }) {
         getTableBodyProps={getTableBodyProps}
       />
 
-      <Pagination
+      <TablePagination
         pageSize={pageSize}
         setPageSize={setPageSize}
         pageIndex={pageIndex}
@@ -122,4 +122,4 @@ function ResearchTable1({ data, updateMyData, skipReset }) {
   );
 }
 
-export default ResearchTable1;
+export default TableIndex;

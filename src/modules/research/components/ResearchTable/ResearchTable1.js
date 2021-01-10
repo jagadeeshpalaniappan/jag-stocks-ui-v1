@@ -7,7 +7,7 @@ import GlobalSearchFilter from '../../../mystock/components/GlobalSearchFilter';
 import Pagination from '../../../mystock/components/Pagination';
 import ShowHideColumns from '../../../mystock/components/ShowHideColumns';
 import Table from './Table/index1';
-import TableDebugVals from './TableDebugVals';
+import TableDebugVals from './Table/components/TableDebugVals';
 import useMyTable from './useMyTable';
 import { tableCols } from './Table/config';
 import { tableData } from '../../data';

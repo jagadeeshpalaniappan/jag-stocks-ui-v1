@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupedCell from '../GroupedCell';
+import GroupedCell from './TableGroupedCell';
 
 export default function TableCell({ row, cell }) {
   return (
