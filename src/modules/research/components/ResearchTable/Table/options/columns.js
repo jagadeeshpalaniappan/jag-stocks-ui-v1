@@ -1,7 +1,7 @@
 import React from 'react';
 import NumberRangeColumnFilter from '../components/filters/NumberRangeColumnFilter';
 import SelectColumnFilter from '../components/filters/SelectColumnFilter';
-import RhAnalysisCell from '../components/cells/RhAnalysisCell';
+import RhAnalysisCell from '../components/cells/RhAnalysisCell1';
 import YfRatingCell from '../components/cells/YfRatingCell';
 
 // ["stockId", "name", "yfRating", "rhNOfAnalysts", "rhBuy", "rhHold", "rhSell", "rhgStarRating", "rhgStewardship", "rhgUncertainty"]
@@ -13,6 +13,10 @@ const columns = [
   {
     Header: 'Name',
     accessor: 'name'
+  },
+  {
+    Header: 'Price',
+    accessor: 'currPrice'
   },
   {
     Header: 'yfDivYield',

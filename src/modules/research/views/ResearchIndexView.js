@@ -1,4 +1,4 @@
-import { Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles, Typography } from '@material-ui/core';
 import React from 'react';
 import Page from 'src/modules/app/components/Page';
 import ResearchTable from '../components/ResearchTable';
@@ -19,6 +19,9 @@ const ResearchIndexView = () => {
   return (
     <Page className={classes.root} title="Research Stocks">
       <Container maxWidth={false}>
+        <Typography variant="h3" gutterBottom>
+          Research
+        </Typography>
         <ResearchTable />
       </Container>
     </Page>

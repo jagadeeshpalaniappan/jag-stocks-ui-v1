@@ -6,37 +6,7 @@ import SvgIcon from '@material-ui/core/SvgIcon';
 import React from 'react';
 import { Check } from 'react-feather';
 
-const options = [
-  'None',
-  'Atria',
-  'Callisto',
-  'Dione',
-  'Ganymede',
-  'Hangouts Call',
-  'Luna',
-  'Oberon',
-  'Phobos',
-  'Pyxis',
-  'Sedna',
-  'Titania',
-  'Triton',
-  'Umbriel'
-];
-
 const ITEM_HEIGHT = 48;
-
-const IndeterminateCheckbox = React.forwardRef(
-  ({ indeterminate, ...rest }, ref) => {
-    const defaultRef = React.useRef();
-    const resolvedRef = ref || defaultRef;
-
-    React.useEffect(() => {
-      resolvedRef.current.indeterminate = indeterminate;
-    }, [resolvedRef, indeterminate]);
-
-    return <input type="checkbox" ref={resolvedRef} {...rest} />;
-  }
-);
 
 export default function TableShowHideColumns({
   allColumns,
@@ -60,7 +30,7 @@ export default function TableShowHideColumns({
   };
 
   return (
-    <div>
+    <Box marginLeft={1}>
       <Button variant="contained" onClick={handleClick}>
         Show/Hide Columns
       </Button>
@@ -105,6 +75,6 @@ export default function TableShowHideColumns({
           </MenuItem>
         ))}
       </Menu>
-    </div>
+    </Box>
   );
 }

@@ -1,3 +1,4 @@
+import { Box, Button } from '@material-ui/core';
 import React from 'react';
 import {
   useExpanded,
@@ -9,16 +10,17 @@ import {
   useSortBy,
   useTable
 } from 'react-table';
-import TableDebugVals from './components/TableDebugVals';
 import Table from './components/Table';
+import TableAppliedFilters from './components/TableAppliedFilters';
+import TableDebugVals from './components/TableDebugVals';
 import TablePagination from './components/TablePagination';
 import TableSearchInput from './components/TableSearchInput';
 import TableShowHideColumns from './components/TableShowHideColumns';
 import columns from './options/columns';
 import defaultColumn from './options/defaultColumn';
+import initialState from './options/initialState';
 import filterTypes from './options/filterTypes';
 import useCheckboxSelection from './plugins/useCheckboxSelection';
-import TableAppliedFilters from './components/TableAppliedFilters';
 
 // Be sure to pass our updateMyData and the skipReset option
 function TableIndex({ data, updateMyData, skipReset }) {
@@ -58,6 +60,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
       data,
       columns,
       defaultColumn,
+      initialState,
       filterTypes,
       updateMyData, // isn't part of the API  (available on the instance), we can call this function from our cell renderer
       autoResetPage: !skipReset,
@@ -78,11 +81,16 @@ function TableIndex({ data, updateMyData, skipReset }) {
   // Render the UI for your table
   return (
     <div>
-      <TableShowHideColumns
-        allColumns={allColumns}
-        getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
-        toggleHideAllColumns={toggleHideAllColumns}
-      />
+      <Box display="flex" justifyContent="flex-end">
+        <Button variant="contained" color="primary">
+          Add Stock(s)
+        </Button>
+        <TableShowHideColumns
+          allColumns={allColumns}
+          getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
+          toggleHideAllColumns={toggleHideAllColumns}
+        />
+      </Box>
       <TableSearchInput
         preGlobalFilteredRows={preGlobalFilteredRows}
         globalFilter={globalFilter}
