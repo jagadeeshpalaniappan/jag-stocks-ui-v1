@@ -1,6 +1,7 @@
 import { SvgIcon, Typography, Box } from '@material-ui/core';
 import React from 'react';
 import { Circle, CheckCircle, ChevronUp, ChevronDown } from 'react-feather';
+import TableHeaderMenu from './TableHeaderMenu';
 export default function TableHeader({ headerGroups }) {
   return (
     <thead>
@@ -20,15 +21,7 @@ export default function TableHeader({ headerGroups }) {
                       >
                         <CheckCircle />
                       </SvgIcon>
-                    ) : (
-                      <SvgIcon
-                        fontSize="small"
-                        color="action"
-                        {...column.getGroupByToggleProps()}
-                      >
-                        <Circle />
-                      </SvgIcon>
-                    )}
+                    ) : null}
                   </Box>
                 ) : null}
 
@@ -52,9 +45,10 @@ export default function TableHeader({ headerGroups }) {
                 ) : (
                   ''
                 )}
+
+                <TableHeaderMenu column={column} />
               </Box>
               {/* Render the columns filter UI */}
-              <div>{column.canFilter ? column.render('Filter') : null}</div>
             </th>
           ))}
         </tr>
