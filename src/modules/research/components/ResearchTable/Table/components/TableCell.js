@@ -1,5 +1,5 @@
 import React from 'react';
-import GroupedCell from './TableGroupedCell';
+import TableGroupedCell from './cells/TableGroupedCell';
 
 export default function TableCell({ row, cell }) {
   return (
@@ -12,7 +12,7 @@ export default function TableCell({ row, cell }) {
       {...cell.getCellProps()}
     >
       {cell.isGrouped ? (
-        <GroupedCell row={row} cell={cell} />
+        <TableGroupedCell row={row} cell={cell} />
       ) : cell.isAggregated ? (
         // If the cell is aggregated, use the Aggregated renderer for cell
         cell.render('Aggregated')

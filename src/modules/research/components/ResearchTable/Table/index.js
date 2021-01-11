@@ -42,6 +42,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
     getTableBodyProps,
     prepareRow,
     getToggleHideAllColumnsProps,
+    toggleHideAllColumns,
     state: {
       pageIndex,
       pageSize,
@@ -80,6 +81,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
       <TableShowHideColumns
         allColumns={allColumns}
         getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
+        toggleHideAllColumns={toggleHideAllColumns}
       />
       <TableSearchInput
         preGlobalFilteredRows={preGlobalFilteredRows}

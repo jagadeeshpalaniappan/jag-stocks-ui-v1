@@ -1,4 +1,29 @@
+import { Box } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
+import SvgIcon from '@material-ui/core/SvgIcon';
 import React from 'react';
+import { Check } from 'react-feather';
+
+const options = [
+  'None',
+  'Atria',
+  'Callisto',
+  'Dione',
+  'Ganymede',
+  'Hangouts Call',
+  'Luna',
+  'Oberon',
+  'Phobos',
+  'Pyxis',
+  'Sedna',
+  'Titania',
+  'Triton',
+  'Umbriel'
+];
+
+const ITEM_HEIGHT = 48;
 
 const IndeterminateCheckbox = React.forwardRef(
   ({ indeterminate, ...rest }, ref) => {
@@ -13,30 +38,73 @@ const IndeterminateCheckbox = React.forwardRef(
   }
 );
 
-export default function ShowHideColumns({
+export default function TableShowHideColumns({
   allColumns,
-  getToggleHideAllColumnsProps
+  getToggleHideAllColumnsProps,
+  toggleHideAllColumns
 }) {
+  console.log({
+    allColumns,
+    getToggleHideAllColumnsProps,
+    toggleHideAllColumns
+  });
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div>
-      <h4 style={{ marginTop: 20, marginBottom: 10 }}>Show/Hide Columns:</h4>
-      <div
-        style={{ display: 'flex', flexWrap: 'wrap', backgroundColor: '#fff' }}
+      <Button variant="contained" onClick={handleClick}>
+        Show/Hide Columns
+      </Button>
+      <Menu
+        id="long-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={open}
+        onClose={handleClose}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right'
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        PaperProps={{
+          style: {
+            maxHeight: ITEM_HEIGHT * 4.5,
+            width: 200
+          }
+        }}
       >
-        <div style={{ marginLeft: 10 }}>
-          <IndeterminateCheckbox {...getToggleHideAllColumnsProps()} /> Toggle
-          All
-        </div>
+        <MenuItem onClick={() => toggleHideAllColumns()}>
+          {getToggleHideAllColumnsProps().checked && (
+            <SvgIcon fontSize="small">
+              <Check />
+            </SvgIcon>
+          )}
+          <div style={{ marginLeft: 5 }}>Toggle All</div>
+        </MenuItem>
         {allColumns.map(column => (
-          <div key={column.id} style={{ marginLeft: 10 }}>
-            <label>
-              <input type="checkbox" {...column.getToggleHiddenProps()} />{' '}
-              {column.Header}
-            </label>
-          </div>
+          <MenuItem key={column.id} onClick={() => column.toggleHidden()}>
+            {column.getToggleHiddenProps().checked && (
+              <SvgIcon fontSize="small">
+                <Check />
+              </SvgIcon>
+            )}
+            <div style={{ marginLeft: 5 }}>{column.Header}</div>
+          </MenuItem>
         ))}
-        <br />
-      </div>
+      </Menu>
     </div>
   );
 }

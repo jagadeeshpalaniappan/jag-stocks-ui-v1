@@ -1,6 +1,13 @@
+import { Paper, makeStyles } from '@material-ui/core';
 import React from 'react';
 import TableBody from './TableBody';
 import TableHeader from './TableHeader';
+
+const useStyles = makeStyles(theme => ({
+  root: {
+    overflowX: 'auto'
+  }
+}));
 
 export default function Table({
   getTableProps,
@@ -16,8 +23,9 @@ export default function Table({
     prepareRow,
     getTableBodyProps
   });
+  const classes = useStyles();
   return (
-    <div style={{ backgroundColor: '#fff', overflowX: 'auto' }}>
+    <Paper elevation={2} className={classes.root}>
       <table {...getTableProps()}>
         <TableHeader headerGroups={headerGroups} />
         <TableBody
@@ -26,6 +34,6 @@ export default function Table({
           getTableBodyProps={getTableBodyProps}
         />
       </table>
-    </div>
+    </Paper>
   );
 }

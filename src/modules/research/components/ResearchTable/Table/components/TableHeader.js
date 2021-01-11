@@ -1,5 +1,6 @@
+import { SvgIcon, Typography, Box } from '@material-ui/core';
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Circle, CheckCircle, ChevronUp, ChevronDown } from 'react-feather';
 export default function TableHeader({ headerGroups }) {
   return (
     <thead>
@@ -7,20 +8,51 @@ export default function TableHeader({ headerGroups }) {
         <tr {...headerGroup.getHeaderGroupProps()}>
           {headerGroup.headers.map(column => (
             <th {...column.getHeaderProps()}>
-              <Typography variant="subtitle2">
+              <Box display="flex" alignItems="center">
                 {column.canGroupBy ? (
                   // If the column can be grouped, let's add a toggle
-                  <span {...column.getGroupByToggleProps()}>
-                    {column.isGrouped ? '🛑 ' : '👊 '}
-                  </span>
+                  <Box marginRight={1}>
+                    {column.isGrouped ? (
+                      <SvgIcon
+                        fontSize="small"
+                        color="primary"
+                        {...column.getGroupByToggleProps()}
+                      >
+                        <CheckCircle />
+                      </SvgIcon>
+                    ) : (
+                      <SvgIcon
+                        fontSize="small"
+                        color="action"
+                        {...column.getGroupByToggleProps()}
+                      >
+                        <Circle />
+                      </SvgIcon>
+                    )}
+                  </Box>
                 ) : null}
 
-                <span {...column.getSortByToggleProps()}>
+                <Typography
+                  variant="subtitle2"
+                  {...column.getSortByToggleProps()}
+                >
                   {column.render('Header')}
-                  {/* Add a sort direction indicator */}
-                  {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-                </span>
-              </Typography>
+                </Typography>
+                {/* Add a sort direction indicator */}
+                {column.isSorted ? (
+                  column.isSortedDesc ? (
+                    <SvgIcon fontSize="small">
+                      <ChevronDown />
+                    </SvgIcon>
+                  ) : (
+                    <SvgIcon fontSize="small">
+                      <ChevronUp />
+                    </SvgIcon>
+                  )
+                ) : (
+                  ''
+                )}
+              </Box>
               {/* Render the columns filter UI */}
               <div>{column.canFilter ? column.render('Filter') : null}</div>
             </th>
