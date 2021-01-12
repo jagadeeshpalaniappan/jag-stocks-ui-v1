@@ -1,5 +1,6 @@
 const initialState = {
-  hiddenColumns: ['rhgStarRating', 'rhgFairVal']
+  hiddenColumns: ['name', 'rhgStarRating', 'rhgFairVal'],
+  pageSize: 100
 };
 
 export default initialState;
