@@ -21,6 +21,7 @@ import defaultColumn from './options/defaultColumn';
 import initialState from './options/initialState';
 import filterTypes from './options/filterTypes';
 import useCheckboxSelection from './plugins/useCheckboxSelection';
+import AddStocks from '../../AddStocks';
 
 // Be sure to pass our updateMyData and the skipReset option
 function TableIndex({ data, updateMyData, skipReset }) {
@@ -82,9 +83,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
   return (
     <div>
       <Box display="flex" justifyContent="flex-end">
-        <Button variant="contained" color="primary">
-          Add Stock(s)
-        </Button>
+        <AddStocks />
         <TableShowHideColumns
           allColumns={allColumns}
           getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
