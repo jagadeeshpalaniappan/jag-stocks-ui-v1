@@ -17,11 +17,18 @@ import UsersView from 'src/modules/user/views/Users';
 import MyStocksIndexView from 'src/modules/mystock/views/MyStocksIndexView';
 import ResearchIndexView from 'src/modules/research/views/ResearchIndexView';
 
+import UsersIndexView from 'src/modules/jstocks/views/UsersIndexView';
+
 const routes = [
   {
     path: 'app',
     element: <AppLayout />,
     children: [
+      {
+        path: 'jstocks',
+        element: <UsersIndexView />,
+        children: [{ path: '/:id', element: <StocksDetailView /> }]
+      },
       {
         path: 'mystocks',
         element: <MyStocksIndexView />,
