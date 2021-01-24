@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { get } from 'lodash-es';
 import { _getHistoryKey } from '../../utils';
-
-const API_URL = `http://localhost:8000/api/stockAnalysis`;
+import appConfig from '../../../app/config';
+const API_URL = `${appConfig.api.stocks}/api/stockAnalysis`;
 
 const sleep = timer => new Promise(resolve => setTimeout(resolve, timer));
 

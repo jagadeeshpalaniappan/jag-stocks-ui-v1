@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_URL = `http://localhost:8000/api/stocks`;
+import appConfig from '../../../app/config';
+const API_URL = `${appConfig.api.stocks}/api/stocks`;
 
 export async function getStocks(config) {
   console.log('fetch::getStocks::', config);
