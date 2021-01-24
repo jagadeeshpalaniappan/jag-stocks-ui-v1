@@ -8,7 +8,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { Typography, Box } from '@material-ui/core';
-import LoadingButton from 'src/modules/common/components/LoadingButton';
+import ResearchStockForm from '../ResearchStockForm';
+
+import { connect } from 'react-redux';
+import { apiCreateStockAction } from '../../state/createStock/actions';
 
 function AddStocksStatus({ status }) {
   let label = null;
@@ -31,7 +34,7 @@ function AddStocksStatus({ status }) {
   );
 }
 
-export default function AddStocks({ addResearchStocks }) {
+function AddStocks({ createStockStatus, apiCreateStockAction }) {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -65,13 +68,13 @@ export default function AddStocks({ addResearchStocks }) {
           />
         </DialogContent>
         <DialogActions>
-          <AddStocksStatus status={{ loading: true, error: false }} />
+          <AddStocksStatus status={createStockStatus} />
           <Button onClick={handleClose} color="primary">
             Cancel
           </Button>
 
           <Button
-            onClick={addResearchStocks}
+            onClick={apiCreateStockAction}
             color="primary"
             variant="contained"
           >
@@ -82,3 +85,10 @@ export default function AddStocks({ addResearchStocks }) {
     </div>
   );
 }
+
+const getCreateStockStatus = state => state.stockState.createStockStatus;
+const mapStateToProps = state => ({
+  createStockStatus: getCreateStockStatus(state)
+});
+const mapDispatchToProps = { apiCreateStockAction };
+export default connect(mapStateToProps, mapDispatchToProps)(AddStocks);

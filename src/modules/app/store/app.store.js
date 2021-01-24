@@ -9,15 +9,15 @@ import thunk from 'redux-thunk';
 // import { userReducer } from 'src/modules/user/state/user.reducer';
 // import { postReducer } from '../modules/post/state/post.reducer';
 
-import { stockReducer } from 'src/modules/stocks/state/reducer';
-import { userReducer } from 'src/modules/jstocks/state/reducer';
+// import { stockReducer } from 'src/modules/stocks/state/reducer';
+import { stockReducer } from 'src/modules/jstocks/state/reducer';
 
 //--------------------------------- Redux: Reducer -----------------------------------
 
 const createRootReducer = () => {
   return combineReducers({
-    stockState: stockReducer,
-    userState: userReducer
+    stockState: stockReducer
+    // userState: userReducer
     // postState: postReducer
   });
 };

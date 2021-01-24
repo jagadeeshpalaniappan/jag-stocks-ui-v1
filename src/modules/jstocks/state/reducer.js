@@ -1,143 +1,168 @@
-import { handleActions } from "redux-actions";
-import { v4 as uuid } from "uuid";
+import { handleActions } from 'redux-actions';
+import { v4 as uuid } from 'uuid';
 
 import {
-  apiGetUsersStartAction,
-  apiGetUsersSuccessAction,
-  apiGetUsersFailureAction,
-} from "./getUsers/actions";
+  apiGetStocksStartAction,
+  apiGetStocksSuccessAction,
+  apiGetStocksFailureAction
+} from './getStocks/actions';
 
 import {
-  apiGetUsersStartReducer,
-  apiGetUsersSuccessReducer,
-  apiGetUsersFailureReducer,
-} from "./getUsers/reducer";
+  apiGetStocksStartReducer,
+  apiGetStocksSuccessReducer,
+  apiGetStocksFailureReducer
+} from './getStocks/reducer';
 
 import {
-  apiCreateUserStartAction,
-  apiCreateUserSuccessAction,
-  apiCreateUserFailureAction,
-  resetCreateUserStatusAction,
-} from "./createUser/actions";
+  apiCreateStockStartAction,
+  apiCreateStockSuccessAction,
+  apiCreateStockFailureAction,
+  resetCreateStockStatusAction
+} from './createStock/actions';
 
 import {
-  apiCreateUserStartReducer,
-  apiCreateUserSuccessReducer,
-  apiCreateUserFailureReducer,
-  resetCreateUserStatusReducer,
-} from "./createUser/reducer";
+  apiCreateStockStartReducer,
+  apiCreateStockSuccessReducer,
+  apiCreateStockFailureReducer,
+  resetCreateStockStatusReducer
+} from './createStock/reducer';
 
 import {
-  apiUpdateUserStartAction,
-  apiUpdateUserSuccessAction,
-  apiUpdateUserFailureAction,
-  resetUpdateUserStatusAction,
-} from "./updateUser/actions";
+  apiUpdateStockStartAction,
+  apiUpdateStockSuccessAction,
+  apiUpdateStockFailureAction,
+  resetUpdateStockStatusAction
+} from './updateStock/actions';
 
 import {
-  apiUpdateUserStartReducer,
-  apiUpdateUserSuccessReducer,
-  apiUpdateUserFailureReducer,
-  resetUpdateUserStatusReducer,
-} from "./updateUser/reducer";
+  apiUpdateStockStartReducer,
+  apiUpdateStockSuccessReducer,
+  apiUpdateStockFailureReducer,
+  resetUpdateStockStatusReducer
+} from './updateStock/reducer';
 
 import {
-  apiDeleteUserStartAction,
-  apiDeleteUserSuccessAction,
-  apiDeleteUserFailureAction,
-  resetDeleteUserStatusAction,
-} from "./deleteUser/actions";
+  apiDeleteStockStartAction,
+  apiDeleteStockSuccessAction,
+  apiDeleteStockFailureAction,
+  resetDeleteStockStatusAction
+} from './deleteStock/actions';
 
 import {
-  apiDeleteUserStartReducer,
-  apiDeleteUserSuccessReducer,
-  apiDeleteUserFailureReducer,
-  resetDeleteUserStatusReducer,
-} from "./deleteUser/reducer";
+  apiDeleteStockStartReducer,
+  apiDeleteStockSuccessReducer,
+  apiDeleteStockFailureReducer,
+  resetDeleteStockStatusReducer
+} from './deleteStock/reducer';
 
-import { openUserModalAction, closeUserModalAction } from "./userModal/actions";
 import {
-  openUserModalReducer,
-  closeUserModalReducer,
-} from "./userModal/reducer";
+  apiGetStockAnalysisStartAction,
+  apiGetStockAnalysisSuccessAction,
+  apiGetStockAnalysisFailureAction
+} from './getStockAnalysis/actions';
 
-import { setFilterAction } from "./filter/actions";
-import { setFilterReducer } from "./filter/reducer";
+import {
+  apiGetStockAnalysisStartReducer,
+  apiGetStockAnalysisSuccessReducer,
+  apiGetStockAnalysisFailureReducer
+} from './getStockAnalysis/reducer';
+
+import {
+  openStockModalAction,
+  closeStockModalAction
+} from './stockModal/actions';
+import {
+  openStockModalReducer,
+  closeStockModalReducer
+} from './stockModal/reducer';
+
+import { setFilterAction } from './filter/actions';
+import { setFilterReducer } from './filter/reducer';
 
 //------------------ Reducers -------------
 
 const defaultState = {
   counter: 0,
   todos: [
-    { id: uuid(), name: "Todo 1" },
-    { id: uuid(), name: "Todo 2" },
+    { id: uuid(), name: 'Todo 1' },
+    { id: uuid(), name: 'Todo 2' }
   ],
-  users: {
+  stocks: {
     data: [],
     loading: false,
-    error: null,
+    error: null
   },
-  user: {
+  stock: {
     data: [],
     loading: false,
-    error: null,
+    error: null
   },
-  createUserStatus: {
+  createStockStatus: {
     success: false,
     loading: false,
-    error: null,
+    error: null
   },
-  updateUserStatus: {
+  updateStockStatus: {
     success: false,
     loading: false,
-    error: null,
+    error: null
   },
-  deleteUserStatus: {
+  deleteStockStatus: {
     success: false,
     loading: false,
-    error: null,
+    error: null
   },
-  userModal: {
+  getStockAnalysisStatus: {
+    success: false,
+    loading: false,
+    error: null
+  },
+  stockModal: {
     isOpen: false,
-    user: null,
+    stock: null
   },
   filter: {
-    active: "All",
-    search: "",
-  },
+    active: 'All',
+    search: ''
+  }
 };
 
-export const userReducer = handleActions(
+export const stockReducer = handleActions(
   {
-    // GET_USERS:
-    [apiGetUsersStartAction]: apiGetUsersStartReducer,
-    [apiGetUsersSuccessAction]: apiGetUsersSuccessReducer,
-    [apiGetUsersFailureAction]: apiGetUsersFailureReducer,
+    // GET_STOCKS:
+    [apiGetStocksStartAction]: apiGetStocksStartReducer,
+    [apiGetStocksSuccessAction]: apiGetStocksSuccessReducer,
+    [apiGetStocksFailureAction]: apiGetStocksFailureReducer,
 
-    // CREATE_USER
-    [apiCreateUserStartAction]: apiCreateUserStartReducer,
-    [apiCreateUserSuccessAction]: apiCreateUserSuccessReducer,
-    [apiCreateUserFailureAction]: apiCreateUserFailureReducer,
-    [resetCreateUserStatusAction]: resetCreateUserStatusReducer,
+    // CREATE_STOCK
+    [apiCreateStockStartAction]: apiCreateStockStartReducer,
+    [apiCreateStockSuccessAction]: apiCreateStockSuccessReducer,
+    [apiCreateStockFailureAction]: apiCreateStockFailureReducer,
+    [resetCreateStockStatusAction]: resetCreateStockStatusReducer,
 
-    // UPDATE_USER
-    [apiUpdateUserStartAction]: apiUpdateUserStartReducer,
-    [apiUpdateUserSuccessAction]: apiUpdateUserSuccessReducer,
-    [apiUpdateUserFailureAction]: apiUpdateUserFailureReducer,
-    [resetUpdateUserStatusAction]: resetUpdateUserStatusReducer,
+    // UPDATE_STOCK
+    [apiUpdateStockStartAction]: apiUpdateStockStartReducer,
+    [apiUpdateStockSuccessAction]: apiUpdateStockSuccessReducer,
+    [apiUpdateStockFailureAction]: apiUpdateStockFailureReducer,
+    [resetUpdateStockStatusAction]: resetUpdateStockStatusReducer,
 
-    // DELETE_USER
-    [apiDeleteUserStartAction]: apiDeleteUserStartReducer,
-    [apiDeleteUserSuccessAction]: apiDeleteUserSuccessReducer,
-    [apiDeleteUserFailureAction]: apiDeleteUserFailureReducer,
-    [resetDeleteUserStatusAction]: resetDeleteUserStatusReducer,
+    // DELETE_STOCK
+    [apiDeleteStockStartAction]: apiDeleteStockStartReducer,
+    [apiDeleteStockSuccessAction]: apiDeleteStockSuccessReducer,
+    [apiDeleteStockFailureAction]: apiDeleteStockFailureReducer,
+    [resetDeleteStockStatusAction]: resetDeleteStockStatusReducer,
 
-    // USER_MODAL
-    [openUserModalAction]: openUserModalReducer,
-    [closeUserModalAction]: closeUserModalReducer,
+    // GET_STOCK_ANALYSIS:
+    [apiGetStockAnalysisStartAction]: apiGetStockAnalysisStartReducer,
+    [apiGetStockAnalysisSuccessAction]: apiGetStockAnalysisSuccessReducer,
+    [apiGetStockAnalysisFailureAction]: apiGetStockAnalysisFailureReducer,
+
+    // STOCK_MODAL
+    [openStockModalAction]: openStockModalReducer,
+    [closeStockModalAction]: closeStockModalReducer,
 
     // FILTER:
-    [setFilterAction]: setFilterReducer,
+    [setFilterAction]: setFilterReducer
   },
   defaultState
 );

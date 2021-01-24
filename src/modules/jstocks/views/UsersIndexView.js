@@ -1,22 +1,24 @@
 import React from 'react';
 import Page from 'src/modules/app/components/Page';
-import UserList from '../components/UserList';
+import StockList from '../components/StockList';
 import StockTable from '../components/StockTable';
-import UserModal from '../components/UserModal';
-import { DeleteUserStatus } from '../components/UserStatus';
-import UserToolbar from '../components/UserToolbar';
+import StockModal from '../components/StockModal';
+import { DeleteStockStatus } from '../components/StockStatus';
+import { GetStockAnalysisStatus } from '../components/StockStatus';
+import StockToolbar from '../components/StockToolbar';
 
-const UsersIndexView = () => {
-  console.log('UsersIndexView');
+const StocksIndexView = () => {
+  console.log('StocksIndexView');
   return (
-    <Page className="container" title="Users">
-      <h3 className="mt-3">Users1: </h3>
-      <UserToolbar />
-      <DeleteUserStatus />
+    <Page className="container" title="Stocks">
+      <h3 className="mt-3">Stocks1: </h3>
+      {/* <StockToolbar /> */}
+      <DeleteStockStatus />
+      <GetStockAnalysisStatus />
       <StockTable />
-      <UserModal />
+      <StockModal />
     </Page>
   );
 };
 
-export default UsersIndexView;
+export default StocksIndexView;

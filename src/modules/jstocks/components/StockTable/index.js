@@ -1,8 +1,8 @@
 import { get } from 'lodash-es';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { apiGetUsersAction } from '../../state/getUsers/actions';
-import { UserListStatus } from '../UserStatus';
+import { apiGetStocksAction } from '../../state/getStocks/actions';
+import { StockListStatus } from '../StockStatus';
 import Table from './Table';
 // import { _getHistoryKey } from '../../utils';
 // import { tableData } from '../../data';
@@ -10,7 +10,6 @@ import Table from './Table';
 export function getStockTableData(apiData) {
   const hisKey = '2021-1'; //_getHistoryKey();
   return apiData.map((stock, idx) => {
-    debugger;
     const rhgFairVal = get(stock, [
       'analysis',
       'rhg',
@@ -20,7 +19,7 @@ export function getStockTableData(apiData) {
     ]);
     return {
       stockId: stock.stockId,
-      name: stock.name,
+      name: get(stock, ['analysis', 'yf', hisKey, 'name']),
       yfDivYield: get(stock, ['analysis', 'yf', hisKey, 'dividendYield']),
       yfNOfAnalysts: get(stock, [
         'analysis',
@@ -49,10 +48,10 @@ export function getStockTableData(apiData) {
   });
 }
 
-function ResearchTable({ users }) {
-  console.log({ users });
+function ResearchTable({ stocks }) {
+  console.log({ stocks });
 
-  const tableData = getStockTableData(users);
+  const tableData = getStockTableData(stocks);
 
   // We need to keep the table from resetting the pageIndex when we Update data.
   // So we can keep track of that flag with a ref.
@@ -101,20 +100,20 @@ function ResearchTable({ users }) {
   );
 }
 
-export const UserList = ({ users, apiGetUsersAction }) => {
-  console.log('UserList');
+export const StockList = ({ stocks, apiGetStocksAction }) => {
+  console.log('StockList');
   useEffect(() => {
-    apiGetUsersAction();
-  }, [apiGetUsersAction]);
+    apiGetStocksAction();
+  }, [apiGetStocksAction]);
   return (
     <>
-      <UserListStatus />
-      <ResearchTable users={users} />
+      <StockListStatus />
+      <ResearchTable stocks={stocks} />
     </>
   );
 };
 
-const getUsers = state => state.userState.users.data;
-const mapStateToProps = state => ({ users: getUsers(state) });
-const mapDispatchToProps = { apiGetUsersAction };
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+const getStocks = state => state.stockState.stocks.data;
+const mapStateToProps = state => ({ stocks: getStocks(state) });
+const mapDispatchToProps = { apiGetStocksAction };
+export default connect(mapStateToProps, mapDispatchToProps)(StockList);
