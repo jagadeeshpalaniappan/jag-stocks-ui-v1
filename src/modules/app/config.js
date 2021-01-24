@@ -1,3 +1,5 @@
+// READ-FRON-ENV-VAR:
+
 const appConfig = {
   api: {
     // stocks: 'http://localhost:8000'
