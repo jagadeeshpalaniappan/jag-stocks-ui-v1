@@ -47,7 +47,15 @@ function AddStocks({ createStockStatus, apiCreateStockAction }) {
 
   const onSubmit = data => {
     console.log('FORM-VALUES:', { data, errors });
-    const stockIds = data.stockIds.split(',');
+    const ids = data.stockIds.split(',');
+    const multiLineIds = data.stockIds.split('\n');
+    const multiColIds = data.stockIds.split('\t');
+
+    let stockIds = [];
+    if (multiColIds.length > 1) stockIds = multiColIds;
+    if (multiLineIds.length > 1) stockIds = multiLineIds;
+    if (ids.length > 1) stockIds = ids;
+
     const stocks = stockIds.map(stockId => ({
       stockId,
       isResearch: true,
