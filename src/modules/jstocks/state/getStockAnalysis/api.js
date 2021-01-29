@@ -6,16 +6,13 @@ const API_URL = `${appConfig.api.stocks}/api/stockAnalysis`;
 
 const sleep = timer => new Promise(resolve => setTimeout(resolve, timer));
 
-async function getStockAnalysisDetails({ stockId, fetchSrcs, rhgtoken }) {
+async function getStockAnalysisDetails({ stockId, fetchSrcs }) {
   console.log('fetch::getStockAnalysisDetails::', stockId, fetchSrcs);
 
   const allPromises = [];
   for (const fetchSrc of fetchSrcs) {
     await sleep(500);
-    const headers = {};
-    if (fetchSrc === 'rhg') headers.rhgtoken = rhgtoken;
-
-    const resp = axios.get(`${API_URL}/${stockId}/${fetchSrc}`, { headers });
+    const resp = axios.get(`${API_URL}/${stockId}/${fetchSrc}`);
     allPromises.push(resp);
   }
 
@@ -28,7 +25,7 @@ const canFetch = (stock, src) => {
   return !get(stock, ['analysis', src, _getHistoryKey()]);
 };
 
-export async function getStockAnalysis(stocks, rhgtoken) {
+export async function getStockAnalysis(stocks) {
   console.log('fetch::getStockAnalysis::', stocks);
   const fetchStockSrcMap = stocks.reduce((res, stock) => {
     const fetchSrcs = [];
@@ -46,8 +43,7 @@ export async function getStockAnalysis(stocks, rhgtoken) {
     await sleep(500);
     const resp = getStockAnalysisDetails({
       stockId,
-      fetchSrcs: fetchStockSrcMap[stockId],
-      rhgtoken
+      fetchSrcs: fetchStockSrcMap[stockId]
     });
     allPromises.push(resp);
   }
