@@ -21,6 +21,16 @@ const columns = [
     accessor: 'currPrice'
   },
   {
+    Header: 'Buy:Price',
+    accessor: 'buyPrice'
+  },
+  {
+    Header: 'Qty',
+    accessor: 'qty',
+    Filter: NumberRangeColumnFilter,
+    filter: 'between'
+  },
+  {
     Header: 'yfDivYield',
     accessor: 'yfDivYield',
     Filter: NumberRangeColumnFilter,

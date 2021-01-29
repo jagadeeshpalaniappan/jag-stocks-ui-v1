@@ -82,11 +82,6 @@ import { setFilterReducer } from './filter/reducer';
 //------------------ Reducers -------------
 
 const defaultState = {
-  counter: 0,
-  todos: [
-    { id: uuid(), name: 'Todo 1' },
-    { id: uuid(), name: 'Todo 2' }
-  ],
   stocks: {
     data: [],
     loading: false,

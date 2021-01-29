@@ -20,6 +20,8 @@ export function getStockTableData(apiData) {
     return {
       stockId: stock.stockId,
       name: get(stock, ['analysis', 'yf', hisKey, 'name']),
+      buyPrice: stock.avgPrice,
+      qty: stock.quantity,
       yfDivYield: get(stock, ['analysis', 'yf', hisKey, 'dividendYield']),
       yfNOfAnalysts: get(stock, [
         'analysis',
