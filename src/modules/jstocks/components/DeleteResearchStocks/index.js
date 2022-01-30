@@ -64,7 +64,9 @@ function DeleteResearchStocks({
           <DialogContentText>
             Are you sure you wanted to delete below stocks?
           </DialogContentText>
-          <code>{JSON.stringify(selectedStockIds)}</code>
+          <Box style={{ overflowWrap: 'break-word' }}>
+            {JSON.stringify(selectedStockIds)}
+          </Box>
         </DialogContent>
         <DialogActions>
           <DeleteStockStatus status={deleteStockStatus} />

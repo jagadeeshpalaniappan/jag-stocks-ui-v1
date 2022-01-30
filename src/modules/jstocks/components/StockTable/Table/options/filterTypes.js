@@ -15,6 +15,15 @@ function filterGreaterThan(rows, id, filterValue) {
   });
 }
 
+const includes = (rows, ids, filterValue) => {
+  return rows.filter(row => {
+    return ids.some(id => {
+      const rowValue = row.values[id];
+      return rowValue ? rowValue.includes(filterValue) : false;
+    });
+  });
+};
+
 // This is an autoRemove method on the filter function that
 // when given the new filter value and returns true, the filter
 // will be automatically removed. Normally this is just an undefined
@@ -37,7 +46,8 @@ const filterTypes = {
         : true;
     });
   },
-  filterGreaterThan
+  filterGreaterThan,
+  includes
 };
 
 export default filterTypes;
