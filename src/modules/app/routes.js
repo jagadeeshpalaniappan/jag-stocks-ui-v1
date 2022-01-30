@@ -5,7 +5,7 @@ import MainLayout from 'src/modules/app/layouts/MainLayout';
 import LoginView from 'src/modules/auth/views/LoginView';
 import RegisterView from 'src/modules/auth/views/RegisterView';
 import StocksDetailView from 'src/modules/stocks/views/StocksDetailView';
-import StocksIndexView from 'src/modules/stocks/views/StocksIndexView';
+// import StocksIndexView from 'src/modules/stocks/views/StocksIndexView';
 import NotFoundView from 'src/modules/errors/NotFoundView';
 import MyPreferences from 'src/modules/my/views/MyPreferences';
 import MyProfileView from 'src/modules/my/views/MyProfileView';
@@ -17,7 +17,8 @@ import UsersView from 'src/modules/user/views/Users';
 import MyStocksIndexView from 'src/modules/mystock/views/MyStocksIndexView';
 import ResearchIndexView from 'src/modules/research/views/ResearchIndexView';
 
-import UsersIndexView from 'src/modules/jstocks/views/UsersIndexView';
+import StocksIndexView from 'src/modules/jstocks/views/StocksIndexView';
+import ChartsView from 'src/modules/jstocks/views/ChartsView';
 
 const routes = [
   {
@@ -26,8 +27,11 @@ const routes = [
     children: [
       {
         path: 'jstocks',
-        element: <UsersIndexView />,
-        children: [{ path: '/:id', element: <StocksDetailView /> }]
+        children: [
+          { path: '/', element: <StocksIndexView /> },
+          { path: '/charts', element: <ChartsView /> }
+          // { path: '/:id', element: <StocksDetailView /> }
+        ]
       },
       {
         path: 'mystocks',

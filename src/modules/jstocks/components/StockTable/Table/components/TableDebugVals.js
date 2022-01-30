@@ -10,7 +10,8 @@ export default function TableDebugVals({
   groupBy,
   expanded,
   filters,
-  selectedRowIds
+  selectedRowIds,
+  selectedFlatRows
 }) {
   return (
     <pre>
@@ -26,7 +27,8 @@ export default function TableDebugVals({
             groupBy,
             expanded,
             filters,
-            selectedRowIds
+            selectedRowIds,
+            'selectedFlatRows[].original': selectedFlatRows.map(d => d.original)
           },
           null,
           2

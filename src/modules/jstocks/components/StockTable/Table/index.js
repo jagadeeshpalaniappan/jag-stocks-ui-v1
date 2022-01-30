@@ -22,6 +22,11 @@ import initialState from './options/initialState';
 import filterTypes from './options/filterTypes';
 import useCheckboxSelection from './plugins/useCheckboxSelection';
 import AddResearchStocks from '../../AddResearchStocks';
+import DeleteResearchStocks from '../../DeleteResearchStocks';
+
+const getSelectedStockIds = selectedFlatRows => {
+  return selectedFlatRows.map(d => d.original.stockId);
+};
 
 // Be sure to pass our updateMyData and the skipReset option
 function TableIndex({ data, updateMyData, skipReset }) {
@@ -46,6 +51,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
     prepareRow,
     getToggleHideAllColumnsProps,
     toggleHideAllColumns,
+    selectedFlatRows,
     state: {
       pageIndex,
       pageSize,
@@ -79,11 +85,14 @@ function TableIndex({ data, updateMyData, skipReset }) {
     useCheckboxSelection
   );
 
+  const selectedStockIds = getSelectedStockIds(selectedFlatRows);
+
   // Render the UI for your table
   return (
     <div>
       <Box display="flex" justifyContent="flex-end">
         <AddResearchStocks />
+        <DeleteResearchStocks selectedStockIds={selectedStockIds} />
         <TableShowHideColumns
           allColumns={allColumns}
           getToggleHideAllColumnsProps={getToggleHideAllColumnsProps}
@@ -130,6 +139,7 @@ function TableIndex({ data, updateMyData, skipReset }) {
         expanded={expanded}
         filters={filters}
         selectedRowIds={selectedRowIds}
+        selectedFlatRows={selectedFlatRows}
       />
     </div>
   );

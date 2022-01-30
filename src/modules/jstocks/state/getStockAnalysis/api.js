@@ -22,7 +22,13 @@ async function getStockAnalysisDetails({ stockId, fetchSrcs }) {
 }
 
 const canFetch = (stock, src) => {
-  return !get(stock, ['analysis', src, _getHistoryKey()]);
+  let isFetchable = false;
+  const lastFetch = get(stock, ['analysis', src, _getHistoryKey()]);
+  const isNoToken = lastFetch && lastFetch.fetchStatus === 'NO_TOKEN';
+  if (!lastFetch || isNoToken) {
+    isFetchable = true;
+  }
+  return isFetchable;
 };
 
 export async function getStockAnalysis(stocks) {

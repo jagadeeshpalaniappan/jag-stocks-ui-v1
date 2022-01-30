@@ -12,3 +12,11 @@ export function _getHistoryKey() {
 //   //   return stock[src] ? stock[src][hisKey] && stock[src][hisKey][key] : null;
 //   return get(stock, `${src}.${hisKey}.${key}`, null);
 // }
+
+export const getLatestVal = (stock, path1, path2) => {
+  // const analysis = get(stock, ['analysis', 'yf', hisKey, 'name']);
+  const analysis = get(stock, path1, ['analysis', 'yf']);
+  const latestAnalysis = Object.keys(analysis).sort((a, b) => b - a);
+  // console.log({ stock, path1, path2, latestAnalysis });
+  return get(analysis, [latestAnalysis[0], ...path2]);
+};

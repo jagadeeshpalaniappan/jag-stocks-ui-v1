@@ -4,55 +4,43 @@ import { connect } from 'react-redux';
 import { apiGetStocksAction } from '../../state/getStocks/actions';
 import { StockListStatus } from '../StockStatus';
 import Table from './Table';
-// import { _getHistoryKey } from '../../utils';
+import { _getHistoryKey, getLatestVal } from '../../utils';
 // import { tableData } from '../../data';
 
 export function getStockTableData(apiData) {
-  const hisKey = '2021-1'; //_getHistoryKey();
+  // const hisKey = '2021-1'; //_getHistoryKey();
+  // const hisKey = _getHistoryKey();
   return apiData.map((stock, idx) => {
-    const rhgFairVal = get(stock, [
-      'analysis',
-      'rhg',
-      hisKey,
-      'fair_value',
-      'value'
-    ]);
+    const rhgFairVal = getLatestVal(
+      stock,
+      ['analysis', 'rhg'],
+      ['fair_value', 'value']
+    );
     return {
       stockId: stock.stockId,
-      name: get(stock, ['analysis', 'yf', hisKey, 'name']),
+      name: getLatestVal(stock, ['analysis', 'yf'], ['name']),
       buyPrice: stock.avgPrice,
       qty: stock.quantity,
-      yfDivYield: get(stock, ['analysis', 'yf', hisKey, 'dividendYield']),
-      yfNOfAnalysts: get(stock, [
-        'analysis',
-        'yf',
-        hisKey,
-        'numberOfAnalystOpinions'
-      ]),
-      yfRating: get(stock, ['analysis', 'yf', hisKey, 'rating']),
-      rhNOfAnalysts: get(stock, ['analysis', 'rh', hisKey, 'nOfAnalysts']),
-      rhBuy: get(stock, ['analysis', 'rh', hisKey, 'buy']),
-      rhHold: get(stock, ['analysis', 'rh', hisKey, 'hold']),
-      rhSell: get(stock, ['analysis', 'rh', hisKey, 'sell']),
-      rhgStarRating: get(stock, ['analysis', 'rhg', hisKey, 'star_rating']),
-      rhgStewardship: get(
+      yfDivYield: getLatestVal(stock, ['analysis', 'yf'], ['dividendYield']),
+      yfNOfAnalysts: getLatestVal(
         stock,
-        ['analysis', 'rhg', hisKey, 'stewardship'],
-        ''
+        ['analysis', 'yf'],
+        ['numberOfAnalystOpinions']
       ),
-      rhgUncertainty: get(
-        stock,
-        ['analysis', 'rhg', hisKey, 'uncertainty'],
-        ''
-      ),
+      yfRating: getLatestVal(stock, ['analysis', 'yf'], ['rating']),
+      rhNOfAnalysts: getLatestVal(stock, ['analysis', 'rh'], ['nOfAnalysts']),
+      rhBuy: getLatestVal(stock, ['analysis', 'rh'], ['buy']),
+      rhHold: getLatestVal(stock, ['analysis', 'rh'], ['hold']),
+      rhSell: getLatestVal(stock, ['analysis', 'rh'], ['sell']),
+      rhgStarRating: getLatestVal(stock, ['analysis', 'rhg'], ['star_rating']),
+      rhgStewardship: getLatestVal(stock, ['analysis', 'rhg'], ['stewardship']),
+      rhgUncertainty: getLatestVal(stock, ['analysis', 'rhg'], ['uncertainty']),
       rhgFairVal: rhgFairVal ? Number(rhgFairVal) : null
     };
   });
 }
 
 function ResearchTable({ stocks }) {
-  console.log({ stocks });
-
   const tableData = getStockTableData(stocks);
 
   // We need to keep the table from resetting the pageIndex when we Update data.
